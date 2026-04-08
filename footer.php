@@ -1,7 +1,7 @@
 <footer>
         <div class="container text-center">
             <p class="mb-0">Projekt strony: <strong>Jan Gołdyn</strong></p>
-            <small class="text-secondary">ANS Nowy Targ</small>
+            <small class="text-secondary">@Projekt PanTadeusz</small>
         </div>
     </footer>
 

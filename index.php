@@ -1,31 +1,40 @@
 <?php include('header.php'); ?>
 
-<main class="container-fluid">
+<div class="container mt-4">
     <div class="row">
-        <?php include('sidebar.php'); ?>
-
-        <section class="col-md-9 col-lg-10 p-5 text-center">
-            <div class="mb-5">
-                <h2>Witaj w cyfrowej wersji epopei</h2>
-                <p class="text-muted">Wybierz księgę z menu po lewej stronie, aby rozpocząć czytanie.</p>
+        <div class="col-md-4">
+            <div class="list-group">
+                <a href="./" class="list-group-item list-group-item-action <?php echo (!isset($_GET['k'])) ? 'active' : ''; ?>">
+                    Strona główna
+                </a>
+                <?php
+                for ($k = 1; $k <= 12; $k++) {
+                    $class = (isset($_GET['k']) && $_GET['k'] == $k) ? 'active' : '';
+                    echo "<a href='./?k=$k' class='list-group-item list-group-item-action $class'>Księga $k</a>";
+                }
+                ?>
             </div>
+        </div>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <img src="pantadeo.jpg" alt="Obrazek PanTadeo" class="hero-image mb-4">
-                    
-                    <div class="text-start bg-light p-4 border-start border-4 border-primary">
-                        <p class="fst-italic">
-                            "Litwo! Ojczyzno moja! ty jesteś jak zdrowie.<br>
-                            Ile cię trzeba cenić, ten tylko się dowie,<br>
-                            Kto cię stracił. Dziś piękność twą w całej ozdobie<br>
-                            Widzę i opisuję, bo tęsknię po tobie."
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="col-md-8">
+            <?php
+            if (isset($_GET['k'])) {
+                $k = $_GET['k'];
+                // Sprawdzamy czy plik istnieje, żeby nie było błędu
+                if (file_exists("./k$k.php")) {
+                    include_once("./k$k.php");
+                } else {
+                    echo "<h2>Błąd: Nie znaleziono treści Księgi $k</h2>";
+                }
+            } else {
+                // To wyświetli się na stronie głównej
+                echo '<h2>Witaj w cyfrowej wersji epopei</h2>';
+                echo '<img src="pantadeo.jpg" alt="Pan Tadeusz" class="img-fluid mb-4">';
+                echo '<p>Wybierz odpowiednią księgę z menu po lewej stronie.</p>';
+            }
+            ?>
+        </div>
     </div>
-</main>
+</div>
 
 <?php include('footer.php'); ?>
