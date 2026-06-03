@@ -1,61 +1,7 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Styl dla aktywnego elementu w menu (czerwone tło) */
-        .active {
-            background-color: #dc3545 !important;
-            border-color: #dc3545 !important;
-            color: white !important;
-        }
-        #content {
-            line-height: 1.6;
-            font-size: 1.1rem;
-        }
-    </style>
-    <title>Pan Tadeusz</title>
-</head>
-<body>
-    <header class="bg-danger text-white text-center py-4 mb-4">
-        <h1>Pan Tadeusz, czyli ostatni zajazd na Litwie...</h1>
-        <p>Adam Mickiewicz</p>
-    </header>
+{% extends "layout.html" %}
 
-    <section class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="list-group" id="toc">
-                    <a href="/" class="list-group-item list-group-item-action active">
-                        Strona główna
-                    </a>
-                    <a href="/book/1" class="list-group-item list-group-item-action">Księga 1</a>
-                    <a href="/book/2" class="list-group-item list-group-item-action">Księga 2</a>
-                    <a href="/book/3" class="list-group-item list-group-item-action">Księga 3</a>
-                    <a href="/book/4" class="list-group-item list-group-item-action">Księga 4</a>
-                    <a href="/book/5" class="list-group-item list-group-item-action">Księga 5</a>
-                    <a href="/book/6" class="list-group-item list-group-item-action">Księga 6</a>
-                    <a href="/book/7" class="list-group-item list-group-item-action">Księga 7</a>
-                    <a href="/book/8" class="list-group-item list-group-item-action">Księga 8</a>
-                    <a href="/book/9" class="list-group-item list-group-item-action">Księga 9</a>
-                    <a href="/book/10" class="list-group-item list-group-item-action">Księga 10</a>
-                    <a href="/book/11" class="list-group-item list-group-item-action">Księga 11</a>
-                    <a href="/book/12" class="list-group-item list-group-item-action">Księga 12</a>
-                </div>
-            </div>
-
-            <div class="col-md-8 text-center">
-                <img src="/static/pan-tadeusz.jpg" alt="Pan Tadeusz" class="img-fluid rounded shadow">
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-danger-subtle text-center py-3 mt-4">
-        <p>Jan Gołdyn, Akademia Nauk Stosowanych w Nowym Targu</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% block content %}
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='pan-tadeusz.jpg') }}" alt="Pan Tadeusz" class="img-fluid rounded shadow">
+    </div>
+{% endblock %}
